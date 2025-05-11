@@ -1,0 +1,119 @@
+{
+    "info": {
+        "_postman_id": "59363e87-cb85-49ce-a8c8-dcf573cd1e43",
+        "name": "chillflix",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "delete movie by id",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "localhost:3000/api/movies/movies/80bf8c34-2aeb-4b44-a488-ce5d9b58b82d",
+                    "path": [
+                        "api",
+                        "movies",
+                        "movies",
+                        "80bf8c34-2aeb-4b44-a488-ce5d9b58b82d"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                }
+            }
+        },
+        {
+            "name": "get movie by id",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "localhost:3000/api/movies/movies/4362f116-5146-4b9e-b124-28db33dc7146",
+                    "path": [
+                        "api",
+                        "movies",
+                        "movies",
+                        "4362f116-5146-4b9e-b124-28db33dc7146"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                }
+            }
+        },
+        {
+            "name": "get all movies",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "localhost:3000/api/movies",
+                    "path": [
+                        "api",
+                        "movies"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                }
+            }
+        },
+        {
+            "name": "send movies",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "localhost:3000/api/movies",
+                    "path": [
+                        "api",
+                        "movies"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"title\": \"Star Wars\",\n  \"genre_id\": \"0dc423da-b1b2-4572-8380-44bbe2b8e24b\"\n}"
+                }
+            }
+        },
+        {
+            "name": "update movie by id",
+            "request": {
+                "method": "PATCH",
+                "url": {
+                    "raw": "localhost:3000/api/movies/movies/d25a5775-4052-4edb-9653-4753090c516f",
+                    "path": [
+                        "api",
+                        "movies",
+                        "movies",
+                        "d25a5775-4052-4edb-9653-4753090c516f"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n \"title\": \"GI:Joe\",\n \"genre_id\": \"\"\n}"
+                }
+            }
+        }
+    ]
+}

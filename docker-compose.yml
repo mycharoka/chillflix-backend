@@ -1,0 +1,39 @@
+# docker-compose.yml
+version: '3.8' # Versi 3.x cukup
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data/ # Gunakan named volume untuk data DB
+    environment:
+      POSTGRES_DB: db_chillflix
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+
+  app:
+    build: . # Tetap build image saat pertama kali atau jika Dockerfile/package.json berubah
+    # Perintah ini akan menimpa CMD di Dockerfile, JIKA diperlukan.
+    # Namun, karena CMD sudah "npm run dev", baris ini biasanya tidak perlu.
+    # command: npm run dev
+    ports:
+      - "3000:3000"
+    working_dir: /usr/src/app # Pastikan working directory sesuai dengan Dockerfile
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/db_chillflix
+      NODE_ENV: development # Set environment ke development
+    volumes:
+      # Bind mount: Map direktori lokal Anda (misal '.') ke /usr/src/app di container
+      - .:/usr/src/app
+      # Volume anonim untuk node_modules: Mencegah node_modules lokal menimpa
+      # node_modules di dalam container (yang diinstal saat build)
+      # dan meningkatkan performa karena tidak perlu memantau folder ini.
+      - /usr/src/app/node_modules
+    depends_on:
+      - db
+    # Hapus 'restart: always' untuk development
+
+volumes:
+  pgdata: # Mendefinisikan named volume untuk postgres

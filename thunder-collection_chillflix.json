@@ -1,0 +1,81 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "chillflix",
+    "collectionId": "98e8047e-6a6f-41fb-b36a-1ca627342803",
+    "dateExported": "2025-05-11T04:49:55.177Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "cfd7b249-c7ad-46a8-89d0-ca574c33a80b",
+            "colId": "98e8047e-6a6f-41fb-b36a-1ca627342803",
+            "containerId": "",
+            "name": "delete movie by id",
+            "url": "localhost:3000/api/movies/movies/80bf8c34-2aeb-4b44-a488-ce5d9b58b82d",
+            "method": "DELETE",
+            "sortNum": 10000,
+            "created": "2025-05-11T04:24:39.340Z",
+            "modified": "2025-05-11T04:24:39.340Z",
+            "headers": []
+        },
+        {
+            "_id": "e26b1491-03cc-4cf2-b762-b744670cc390",
+            "colId": "98e8047e-6a6f-41fb-b36a-1ca627342803",
+            "containerId": "",
+            "name": "get movie by id",
+            "url": "localhost:3000/api/movies/movies/4362f116-5146-4b9e-b124-28db33dc7146",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2025-05-11T04:24:46.816Z",
+            "modified": "2025-05-11T04:24:46.816Z",
+            "headers": []
+        },
+        {
+            "_id": "2329c4c8-3e4e-4396-9489-826978d2f33e",
+            "colId": "98e8047e-6a6f-41fb-b36a-1ca627342803",
+            "containerId": "",
+            "name": "get all movies",
+            "url": "localhost:3000/api/movies",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2025-05-11T04:24:54.040Z",
+            "modified": "2025-05-11T04:24:54.040Z",
+            "headers": []
+        },
+        {
+            "_id": "b32f6df4-6ee2-4c83-bf56-3957bdc9caeb",
+            "colId": "98e8047e-6a6f-41fb-b36a-1ca627342803",
+            "containerId": "",
+            "name": "send movies",
+            "url": "localhost:3000/api/movies",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2025-05-11T04:24:59.216Z",
+            "modified": "2025-05-11T04:29:55.950Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Star Wars\",\n  \"genre_id\": \"0dc423da-b1b2-4572-8380-44bbe2b8e24b\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "efab0f07-9c43-47f0-9e03-75d6da054522",
+            "colId": "98e8047e-6a6f-41fb-b36a-1ca627342803",
+            "containerId": "",
+            "name": "update movie by id",
+            "url": "localhost:3000/api/movies/movies/d25a5775-4052-4edb-9653-4753090c516f",
+            "method": "PATCH",
+            "sortNum": 50000,
+            "created": "2025-05-11T04:48:54.827Z",
+            "modified": "2025-05-11T04:48:54.827Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"title\": \"GI:Joe\",\n \"genre_id\": \"\"\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "rQTXralnWUwqtW-KbIwsBJu8DQJkiHekrGwMuRiZPJmou5MfK37suvv-rvzCyBSvJ8pnngdoP4EeejWrsYiiOw"
+}
