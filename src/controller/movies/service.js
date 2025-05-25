@@ -1,10 +1,35 @@
 const pool = require("../../../config/database")
 const db = require("../../../config/knexInstance")
-const { up } = require("../../../migrations/20250429075956_create_movies_table")
 
-async function getAllMovies() {
+async function getAllMovies(query) {
+  const {search, sort, filter} = query
+  let queryStr = `SELECT * FROM movies`
+  const queryValues = []
+
+  if (search) {
+    queryStr += ` WHERE title ILIKE $1`
+    queryValues.push(`%${search}%`)
+  }
+
+  if (filter) {
+    if (!search) {
+      queryStr += ` WHERE genre_id = $1`
+    } else {
+      queryStr += ` AND genre_id = $1`
+    }
+    queryValues.push(filter)
+  }
+
+  if (sort) {
+    if (sort === 'latest') {
+      queryStr += ` ORDER BY created_at DESC`
+    } else if (sort === 'oldest') {
+      queryStr += ` ORDER BY created_at ASC`
+    }
+  }
+
   try {
-    const query = await pool.query("SELECT * FROM movies")
+    const query = await pool.query(queryStr, queryValues)
     return {
       statusCode: query.rows.length > 0 ? 200 : 400,
       data : {
@@ -69,7 +94,6 @@ async function updateMoviesById(id, body) {
 async function deleteMoviesById(id) {
   try {
     const query = await pool.query("DELETE FROM movies WHERE movie_id = $1", [id])
-    console.log(query);
     
     return {
       statusCode: query.rowCount === 1 ? 200 : 400,
@@ -82,9 +106,10 @@ async function deleteMoviesById(id) {
     throw new Error(error)
   }
 }
-async function createMovie(req) {
+async function createMovie(body, file) {
   try {
-    const query = await pool.query("INSERT INTO movies(title, genre_id) VALUES ($1, $2) RETURNING *", [req.title, req.genre_id])
+    let imagePath = `/image/${file.filename}`
+    const query = await pool.query("INSERT INTO movies(title, genre_id, image_path) VALUES ($1, $2, $3) RETURNING *", [body.title, body.genre_id, imagePath])
     return {
       statusCode: 200,
       data : {
